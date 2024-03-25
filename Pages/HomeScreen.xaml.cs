@@ -1,4 +1,7 @@
-﻿using ExamTask.Navigator;
+﻿using ExamTask.Models;
+using ExamTask.Navigator;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static MaterialDesignThemes.Wpf.Theme;
 
 namespace ExamTask.Pages
 {
@@ -21,9 +25,18 @@ namespace ExamTask.Pages
     /// </summary>
     public partial class HomeScreen : UserControl
     {
+        private readonly DataContext _dataContext;
         public HomeScreen()
         {
             InitializeComponent();
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("config.json")
+                .Build();
+
+            DbContextOptions<DataContext> options = new DbContextOptionsBuilder<DataContext>()
+                .UseSqlServer(config.GetConnectionString("Default"))
+                .Options;
+            _dataContext = new DataContext(options);
         }
 
         private void InfoClick(object sender, RoutedEventArgs e)
@@ -33,14 +46,32 @@ namespace ExamTask.Pages
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
-            if (tb_login.Text == "Admin" && tb_password.Text == "1234")
+            var user = _dataContext.User.FirstOrDefault(u => u.Login == tb_login.Text);
+            if (user != null)
             {
-                NavigatorObject.Switch(new Bookstore());
+                if (user.Password == tb_password.Text)
+                {
+                    if (user.Role == "Admin") { NavigatorObject.Switch(new Bookstore(_dataContext)); }
+                    else { /*NavigatorObject.Switch(new UserScreen(_dataContext));*/ } // User Screen
+                }
+                else
+                {
+                    // Uncorrect password
+                    // NavigatorObject.Switch(new ErrorScreen());
+                    throw new NotImplementedException();
+                }
             }
             else
             {
-                //NavigatorObject.Switch(new ErrorScreen());
+                // Uncorrect login
+                // NavigatorObject.Switch(new ErrorScreen());
+                throw new NotImplementedException();
             }
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatorObject.Switch(new RegisterScreen(_dataContext));
         }
     }
 }

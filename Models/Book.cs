@@ -1,21 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ExamTask.Models
+namespace ExamTask.Models;
+
+public class Book
 {
-    public class Book
-    {
-        public string Title { get; set; } 
-        public string Author { get; set; } 
-        public string Publisher { get; set; } 
-        public int PageCount { get; set; } 
-        public string Genre { get; set; } 
-        public int Year { get; set; } 
-        public decimal CostPrice { get; set; } 
-        public decimal SellingPrice { get; set; } 
-        public bool IsContinuation { get; set; } 
-    }
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    [StringLength(64)]
+    public string Title { get; set; }
+
+    [Required]
+    [StringLength(32)]
+    public string Author { get; set; }
+
+    [Required]
+    [StringLength(32)]
+    public string Publisher { get; set; }
+
+    [Required]
+    public int PageCount { get; set; }
+
+    [Required]
+    [StringLength(32)]
+    public string Genre { get; set; }
+
+    [Required]
+    public int Year { get; set; }
+
+    [Required]
+    public int CostPrice { get; set; }
+
+    [Required]
+    public int SellingPrice { get; set; }
+
+    [Required]
+    public bool IsContinuation { get; set; } 
 }

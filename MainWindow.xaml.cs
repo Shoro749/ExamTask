@@ -25,7 +25,7 @@ namespace ExamTask
             NavigatorObject.Switch((UserControl)new HomeScreen());
         }
 
-        public Action CloseAction { get; set; }
+        public Action? CloseAction { get; set; }
 
         public void Navigate(UserControl nextPage)
         {
@@ -35,7 +35,7 @@ namespace ExamTask
         public void Navigate(UserControl nextPage, object state)
         {
             this.Content = nextPage;
-            INavigator s = nextPage as INavigator;
+            INavigator? s = nextPage as INavigator;
 
             if (s != null)
                 s.UtilizeState(state);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExamTask.Models;
+using ExamTask.Navigator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,17 @@ namespace ExamTask.Pages
     /// </summary>
     public partial class Bookstore : UserControl
     {
-        public Bookstore()
+        private readonly DataContext _dataContext;
+        public Bookstore(DataContext dataContext)
         {
             InitializeComponent();
+            _dataContext = dataContext;
+            dataGrid.ItemsSource = _dataContext.Book.ToList();
+        }
+
+        private void AddBook_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatorObject.Switch(new AddBookScreen(_dataContext));
         }
     }
 }

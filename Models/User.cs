@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ExamTask.Models
+namespace ExamTask.Models;
+
+public class User
 {
-    public class User
-    {
-        public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
-    }
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    [StringLength(32)]
+    public string Login { get; set; }
+
+    [Required]
+    [StringLength(64)]
+    public string Password { get; set; }
+
+    [Required]
+    [StringLength(32)]
+    public string Role { get; set; }
 }
