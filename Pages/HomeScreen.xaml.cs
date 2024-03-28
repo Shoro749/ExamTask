@@ -51,8 +51,7 @@ namespace ExamTask.Pages
             {
                 if (user.Password == tb_password.Text)
                 {
-                    if (user.Role == "Admin") { NavigatorObject.Switch(new Bookstore(_dataContext)); }
-                    else { /*NavigatorObject.Switch(new UserScreen(_dataContext));*/ } // User Screen
+                    NavigatorObject.Switch(new Bookstore(_dataContext));
                 }
                 else
                 {

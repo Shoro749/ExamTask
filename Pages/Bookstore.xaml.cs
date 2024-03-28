@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace ExamTask.Pages
 {
@@ -33,6 +34,53 @@ namespace ExamTask.Pages
         private void AddBook_Click(object sender, RoutedEventArgs e)
         {
             NavigatorObject.Switch(new AddBookScreen(_dataContext));
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            var books = _dataContext.Book.Where(b => b.Title == tb_search.Text || b.Author == tb_search.Text || b.Genre == tb_search.Text).ToList();
+
+            if (books.Any())
+            {
+                dataGrid.ItemsSource = books;
+            }
+            else
+            {
+                dataGrid.ItemsSource = _dataContext.Book.ToList();
+            }
+        }
+
+        private void DeleteBook_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItems = dataGrid.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                List<int> selectedIds = new List<int>();
+
+                foreach (var selectedItem in selectedItems)
+                {
+                    if (selectedItem is Book yourObject)
+                    {
+                        int id = yourObject.Id;
+                        selectedIds.Add(id);
+                    }
+                }
+
+                foreach (var id in selectedIds)
+                {
+                    Book item = _dataContext.Set<Book>().Find(id) ??
+                    throw new ArgumentNullException();
+
+                    _dataContext.Set<Book>().Remove(item);
+                    _dataContext.SaveChanges();
+                }
+                dataGrid.ItemsSource = _dataContext.Book.ToList();
+            }
+            else
+            {
+                MessageBox.Show("Please select at least one item to delete.");
+            }
+            
         }
     }
 }

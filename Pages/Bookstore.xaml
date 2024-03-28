@@ -30,7 +30,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Button x:Name="b_addBook" Height="40" Width="200" Content="Add book" Grid.Row="0" FontFamily="Arial" FontSize="18" Click="AddBook_Click" />
-            <Button x:Name="b_delBook" Height="40" Width="200" Content="Delete book" Grid.Row="1" FontFamily="Arial" FontSize="18" />
+            <Button x:Name="b_delBook" Height="40" Width="200" Content="Delete book" Grid.Row="1" FontFamily="Arial" FontSize="18" Click="DeleteBook_Click" />
             <Button x:Name="b_editBook" Height="40" Width="200" Content="Edit book" Grid.Row="2" FontFamily="Arial" FontSize="18" />
             <Button x:Name="b_sellBook" Height="40" Width="200" Content="Sell book" Grid.Row="3" FontFamily="Arial" FontSize="18" />
             <Button x:Name="b_writeOfBook" Height="40" Width="200" Content="Write of book" Grid.Row="4" FontFamily="Arial" FontSize="18" />
@@ -39,7 +39,7 @@
         </Grid>
 
         <TextBox x:Name="tb_search" Grid.Column="1" Width="500" Height="35" HorizontalAlignment="Left" Margin="10,8,0,8"/>
-        <Button x:Name="b_search" Content="Search" Grid.Column="1" Width="40" Height="35" HorizontalAlignment="Left" Margin="521,8,0,7" FontFamily="Arial" FontSize="11"/>
+        <Button x:Name="b_search" Content="Search" Grid.Column="1" Width="40" Height="35" HorizontalAlignment="Left" Margin="521,8,0,7" FontFamily="Arial" FontSize="11" Click="Search_Click"/>
 
         <DataGrid x:Name="dataGrid" Grid.Column="1" Grid.Row="1">
 

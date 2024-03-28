@@ -45,7 +45,7 @@ namespace ExamTask.Pages
                 {
                     Login = tb_login.Text,
                     Password = tb_password.Text,
-                    Role = "User"
+                    Role = "User" // Remove
                 };
                 dataContext.User.Add(user);
                 dataContext.SaveChanges();

@@ -34,7 +34,7 @@
         <TextBox x:Name="tb_year" Height="30" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="112,0,50,0"/>
         <Label Content="Cost Price" Grid.Row="3" Grid.Column="1" FontFamily="Arial" FontSize="18" FontWeight="Bold" Margin="10,18,288,15"/>
         <TextBox x:Name="tb_costPrice" Height="30" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="112,0,50,0"/>
-        <Label Content="Selling Price" Grid.Row="4" Grid.Column="1" FontFamily="Arial" FontSize="16" FontWeight="Bold" Margin="7,18,274,13"/>
+        <Label Content="Selling Price" Grid.Row="4" Grid.Column="1" FontFamily="Arial" FontSize="16" FontWeight="Bold" Margin="0,18,281,13"/>
         <TextBox x:Name="tb_sellingPrice" Height="30" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="112,0,50,0"/>
         <Label Content="Is continuation" Grid.Row="5" FontFamily="Arial" FontSize="18" FontWeight="Bold" Margin="61,16,339,16" Grid.ColumnSpan="2"/>
         <CheckBox x:Name="cb_IsContinuation" Grid.Row="5" Grid.ColumnSpan="2" Margin="249,24,151,-24"/>
