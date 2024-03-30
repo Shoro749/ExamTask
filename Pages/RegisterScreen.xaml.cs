@@ -45,13 +45,17 @@ namespace ExamTask.Pages
                 {
                     Login = tb_login.Text,
                     Password = tb_password.Text,
-                    Role = "User" // Remove
                 };
                 dataContext.User.Add(user);
                 dataContext.SaveChanges();
                 MessageBox.Show("You have successfully registered!");
                 NavigatorObject.Switch(new HomeScreen());
             }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatorObject.Switch(new HomeScreen());
         }
     }
 }

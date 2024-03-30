@@ -80,5 +80,10 @@ namespace ExamTask.Pages
             }
             NavigatorObject.Switch(new Bookstore(_dataContext));
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            NavigatorObject.Switch(new Bookstore(_dataContext));
+        }
     }
 }

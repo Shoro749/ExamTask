@@ -18,5 +18,7 @@ namespace ExamTask
 
         public DbSet<User> User { get; set; } = default!;
         public DbSet<Book> Book { get; set; } = default!;
+        public DbSet<ShelvedBooks> ShelvedBooks { get; set;} = default!;
+        public DbSet<BooksWrittenOff> BooksWrittenOff { get; set; } = default!;
     }
 }

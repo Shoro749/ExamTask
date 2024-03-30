@@ -29,35 +29,6 @@ namespace ExamTask.Pages
             InitializeComponent();
             _dataContext = dataContext;
 
-            //Book book1 = new Book
-            //{
-            //    Title = "The Great Gatsby",
-            //    Author = "F. Scott Fitzgerald",
-            //    Publisher = "Scribner",
-            //    PageCount = 180,
-            //    Genre = "Classic",
-            //    Year = 1925,
-            //    CostPrice = 10,
-            //    SellingPrice = 20,
-            //    IsContinuation = false,
-            //};
-
-            //Book book2 = new Book
-            //{
-            //    Title = "Harry Potter and the Philosopher's Stone",
-            //    Author = "J.K. Rowling",
-            //    Publisher = "Bloomsbury Publishing",
-            //    PageCount = 223,
-            //    Genre = "Fantasy",
-            //    Year = 1997,
-            //    CostPrice = 8,
-            //    SellingPrice = 15,
-            //    IsContinuation = true,
-            //};
-            //dataContext.Book.Add(book1);
-            //dataContext.Book.Add(book2);
-            //_dataContext.SaveChanges();
-
             dataGrid.ItemsSource = _dataContext.Book.ToList();
         }
 
@@ -119,10 +90,6 @@ namespace ExamTask.Pages
             if (selectedItem.Count == 1)
             {
                 var selectedBook = selectedItem[0] as Book;
-                if (selectedBook != null)
-                {
-                    NavigatorObject.Switch(new EditScreen(_dataContext, selectedBook));
-                }
             }
             else
             {
@@ -140,7 +107,15 @@ namespace ExamTask.Pages
                 {
                     if (item is Book book)
                     {
-                        selectedBooks.Add(book);
+                        var booK = _dataContext.Book.Any(b => b == book);
+                        if (booK)
+                        {
+                            MessageBox.Show("This book is on hold!");
+                        }
+                        else
+                        {
+                            selectedBooks.Add(book);
+                        }
                     }
                 }
                 NavigatorObject.Switch(new SellBookScreen(_dataContext, selectedBooks));
@@ -154,17 +129,61 @@ namespace ExamTask.Pages
 
         private void WriteOfBook_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var selectedItem = dataGrid.SelectedItems;
+            if (selectedItem.Count == 1)
+            {
+                var selectedBook = selectedItem[0] as Book;
+                if (selectedBook != null)
+                {
+                    NavigatorObject.Switch(new WriteOffScreen(_dataContext, selectedBook));
+                    _dataContext.Set<Book>().Remove(selectedBook);
+                    dataGrid.ItemsSource = _dataContext.Book.ToList();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select at least one item to edit.");
+            }
         }
 
         private void PromoteBooks_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var selectedItems = dataGrid.SelectedItems;
+            if (selectedItems.Count > 0)
+            {
+                List<Book> selectedBooks = new List<Book>();
+                foreach (var item in selectedItems)
+                {
+                    if (item is Book book)
+                    {
+                        selectedBooks.Add(book);
+                    }
+                }
+                NavigatorObject.Switch(new PromoteScreen(_dataContext, selectedBooks));
+                dataGrid.ItemsSource = _dataContext.Book.ToList();
+            }
+            else
+            {
+                MessageBox.Show("Please select at least one item to edit.");
+            }
         }
 
         private void PutBookAside_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var selectedItem = dataGrid.SelectedItems;
+            if (selectedItem.Count == 1)
+            {
+                var selectedBook = selectedItem[0] as Book;
+                if (selectedBook != null)
+                {
+                    NavigatorObject.Switch(new PutBookAsideScreen(_dataContext, selectedBook));
+                    dataGrid.ItemsSource = _dataContext.Book.ToList();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select at least one item to edit.");
+            }
         }
     }
 }

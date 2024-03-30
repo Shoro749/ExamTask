@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="ExamTask.Pages.PromoteScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExamTask.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="250" Background="WhiteSmoke"  Width="250" Height="140">
+    <Grid>
+        <Label Content="Promotion" FontFamily="Arial" FontSize="22" FontWeight="Bold" Margin="69,10,-69,-10"/>
+        <TextBox x:Name="tb_promote" Width="200" Height="30" Margin="25,60,25,90"/>
+        <Button x:Name="b_promote" Content="Apply" Width="200" Height="30" Margin="25,100,25,50" FontFamily="Arial" FontSize="18" FontWeight="Bold" Click="Promote_Click"/>
+        <Button x:Name="b_cancel" Content="Cancel" Height="30" Margin="25,140,25,10" FontFamily="Arial" FontSize="18" FontWeight="Bold" Click="Cancel_Click"/>
+    </Grid>
+</UserControl>

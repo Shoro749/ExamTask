@@ -2,16 +2,13 @@
 
 namespace ExamTask.Models;
 
-public class User
+public class BooksWrittenOff
 {
     [Key]
     public int Id { get; set; }
-
     [Required]
-    [StringLength(32)]
-    public string Login { get; set; }
-
+    public Book book { get; set; }
     [Required]
-    [StringLength(64)]
-    public string Password { get; set; }
+    [StringLength(128)]
+    public string Reason { get; set; }
 }

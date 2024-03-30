@@ -1,5 +1,6 @@
 ﻿using ExamTask.Models;
 using ExamTask.Navigator;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ExamTask.Pages;
@@ -31,6 +32,11 @@ public partial class AddBookScreen : UserControl
             IsContinuation = cb_IsContinuation.IsChecked ?? false,
         });
         _dataContext.SaveChanges();
+        NavigatorObject.Switch(new Bookstore(_dataContext));
+    }
+
+    private void Cancel_Click(object sender, RoutedEventArgs e)
+    {
         NavigatorObject.Switch(new Bookstore(_dataContext));
     }
 }

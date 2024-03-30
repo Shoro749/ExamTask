@@ -18,6 +18,7 @@
         <TextBox x:Name="tb_login" Height="30" Grid.Row="1" VerticalAlignment="Center" Margin="112,0,50,0"/>
         <Label Content="Password" Grid.Row="2" FontFamily="Arial" FontSize="18" FontWeight="Bold" Margin="10,35,-10,31" Grid.RowSpan="2"/>
         <TextBox x:Name="tb_password" Height="30" Grid.Row="2" VerticalAlignment="Center" Margin="112,0,50,0"/>
-        <Button x:Name="b_register" Content="Sign up" Grid.Row="5" Width="200" Height="40" VerticalAlignment="Center" FontFamily="Arial" FontWeight="Bold" Click="SignUp_Click"/>
+        <Button x:Name="b_register" Content="Sign up" Grid.Row="3" Width="150" Height="40" VerticalAlignment="Center" FontFamily="Arial" FontWeight="Bold" Click="SignUp_Click" Margin="31,0,219,0"/>
+        <Button x:Name="b_cancel" Content="Cancel" Width="150" Height="40" Margin="210,30,40,30" FontFamily="Arial" FontSize="12" FontWeight="Bold" Click="Cancel_Click" Grid.Row="3"/>
     </Grid>
 </UserControl>

@@ -37,6 +37,43 @@ namespace ExamTask.Pages
                 .UseSqlServer(config.GetConnectionString("Default"))
                 .Options;
             _dataContext = new DataContext(options);
+
+            //Book book1 = new Book
+            //{
+            //    Title = "The Great Gatsby",
+            //    Author = "F. Scott Fitzgerald",
+            //    Publisher = "Scribner",
+            //    PageCount = 180,
+            //    Genre = "Classic",
+            //    Year = 1925,
+            //    CostPrice = 10,
+            //    SellingPrice = 20,
+            //    IsContinuation = false,
+            //};
+
+            //Book book2 = new Book
+            //{
+            //    Title = "Harry Potter and the Philosopher's Stone",
+            //    Author = "J.K. Rowling",
+            //    Publisher = "Bloomsbury Publishing",
+            //    PageCount = 223,
+            //    Genre = "Fantasy",
+            //    Year = 1997,
+            //    CostPrice = 8,
+            //    SellingPrice = 15,
+            //    IsContinuation = true,
+            //};
+
+            //User user = new User
+            //{
+            //    Login = "Admin",
+            //    Password = "1234"
+            //};
+
+            //_dataContext.Book.Add(book1);
+            //_dataContext.Book.Add(book2);
+            //_dataContext.User.Add(user);
+            //_dataContext.SaveChanges();
         }
 
         private void InfoClick(object sender, RoutedEventArgs e)
@@ -56,15 +93,13 @@ namespace ExamTask.Pages
                 else
                 {
                     // Uncorrect password
-                    // NavigatorObject.Switch(new ErrorScreen());
-                    throw new NotImplementedException();
+                    MessageBox.Show("Uncorrect password");
                 }
             }
             else
             {
                 // Uncorrect login
-                // NavigatorObject.Switch(new ErrorScreen());
-                throw new NotImplementedException();
+                MessageBox.Show("Uncorrect login");
             }
         }
 
