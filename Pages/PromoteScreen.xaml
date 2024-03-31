@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ExamTask.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="180" d:DesignWidth="250" Background="WhiteSmoke"  Width="250" Height="140">
+             d:DesignHeight="180" d:DesignWidth="250" Background="WhiteSmoke"  Width="250" Height="180">
     <Grid>
         <Label Content="Promotion" FontFamily="Arial" FontSize="22" FontWeight="Bold" Margin="69,10,-69,-10"/>
         <TextBox x:Name="tb_promote" Width="200" Height="30" Margin="25,60,25,90"/>

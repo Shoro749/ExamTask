@@ -23,12 +23,12 @@ namespace ExamTask.Pages
     public partial class PutBookAsideScreen : UserControl
     {
         private readonly DataContext _dataContext;
-        private Book book;
+        private Book _book;
         public PutBookAsideScreen(DataContext dataContext, Book selectedBook)
         {
             InitializeComponent();
             _dataContext = dataContext;
-            book = selectedBook;
+            _book = selectedBook;
             dataGrid.ItemsSource = _dataContext.ShelvedBooks.ToList();
         }
 
@@ -41,7 +41,7 @@ namespace ExamTask.Pages
         {
             _dataContext.ShelvedBooks.Add(new ShelvedBooks
             {
-                book = book,
+                book = _book,
             });
             _dataContext.SaveChanges();
             NavigatorObject.Switch(new Bookstore(_dataContext));

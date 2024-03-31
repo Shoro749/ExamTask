@@ -12,8 +12,9 @@ namespace ExamTask
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var user = modelBuilder.Entity<User>();
-            user.HasIndex(x => x.Login).IsUnique();
+            //var user = modelBuilder.Entity<User>();
+            //user.HasIndex(x => x.Login).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(x => x.Login).IsUnique();
         }
 
         public DbSet<User> User { get; set; } = default!;

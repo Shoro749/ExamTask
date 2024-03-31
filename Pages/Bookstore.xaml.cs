@@ -90,6 +90,7 @@ namespace ExamTask.Pages
             if (selectedItem.Count == 1)
             {
                 var selectedBook = selectedItem[0] as Book;
+                NavigatorObject.Switch(new EditScreen(_dataContext, selectedBook));
             }
             else
             {
@@ -107,10 +108,11 @@ namespace ExamTask.Pages
                 {
                     if (item is Book book)
                     {
-                        var booK = _dataContext.Book.Any(b => b == book);
+                        var booK = _dataContext.ShelvedBooks.Any(b => b.book == book);
                         if (booK)
                         {
                             MessageBox.Show("This book is on hold!");
+                            return;
                         }
                         else
                         {
@@ -137,6 +139,7 @@ namespace ExamTask.Pages
                 {
                     NavigatorObject.Switch(new WriteOffScreen(_dataContext, selectedBook));
                     _dataContext.Set<Book>().Remove(selectedBook);
+                    _dataContext.SaveChanges();
                     dataGrid.ItemsSource = _dataContext.Book.ToList();
                 }
             }
